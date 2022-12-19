@@ -8,65 +8,44 @@ body, html {
   }
 
   @include mediaquerries(xs) {
-    .parallax {
-        /* The image used */
-        background-image: url("https://picsum.photos/200/300");
-      
-        /* Full height */
-        height: 100%;
-      
-        /* Create the parallax scrolling effect */
+    #parallax {
+        height: 70%;
         background-attachment: fixed;
-        background-position: center;
+        object-fit: cover;
         background-repeat: no-repeat;
-        background-size: cover;
       }
+
   }
 
   @include mediaquerries(sm) {
-    .parallax {
-        /* The image used */
-        background-image: url("https://picsum.photos/200/300");
-      
-        /* Full height */
-        height: 100%;
-      
-        /* Create the parallax scrolling effect */
+    #parallax {
+        height: 70%;
         background-attachment: fixed;
-        background-position: center;
+        object-fit: cover;
         background-repeat: no-repeat;
-        background-size: cover;
       }
+
   }
 
   @include mediaquerries(md) {
-    .parallax {
-        /* The image used */
-        background-image: url("https://picsum.photos/200/300");
-      
-        /* Full height */
-        height: 100%;
-      
-        /* Create the parallax scrolling effect */
+    #parallax {
+        height: 70%;
         background-attachment: fixed;
-        background-position: center;
+        object-fit: cover;
         background-repeat: no-repeat;
-        background-size: cover;
       }
+
   }
 
   @include mediaquerries(lg) {
-    .parallax {
-        /* The image used */
-        background-image: url("https://picsum.photos/200/300");
+    #parallax {
+      height: 70%;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       
-        /* Full height */
-        height: 100%;
       
-        /* Create the parallax scrolling effect */
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
       }
+    
   }
