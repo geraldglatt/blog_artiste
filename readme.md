@@ -1,4 +1,4 @@
-# creche_sucePouce
+# site Artiste
 
 creche_sucePouce est un site internet présentant des images/actualités
 
@@ -16,7 +16,13 @@ composer install
 npm install
 npm run build
 symfony server:start
+
 ## Lancer des tests
 ’’’bash
 php bin/phpunit --testdox
+’’’
+
+## Ajouter des données de tests
+’’’bash
+symfony console doctrine:fixtures:load ou symfony console d:f:l
 ’’’
