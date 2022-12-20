@@ -14,65 +14,30 @@
             </div>
         </div>
         <div class="row">
+        {% for peinture in peintures %}
             <div class="col-12">
                 <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="flip-up" data-aos-duration="1100" data-aos-easing="linear">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                        <img src="/img/8cf81d_d7b4ff0e1e5ddc7b7e7c5ec8bc23e2a1.webp" class="card-img" alt="...">
+                        <img src="{{ peinture.file }}" class="card-img" alt="...">
                         </div>
                         <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Titre de la peinture</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <h5 class="card-title">{{ peinture.nom }}</h5>
+                            <p class="card-text">{{ peinture.description | u.truncate(200, '...', false) }}</p>
+                            <p class="card-text"><small class="text-muted"> Ajoutée le {{ peinture.createdAt | date('d/m/Y')  }}</small></p>
                         </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="flip-up" data-aos-duration="1100" data-aos-easing="linear">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                        <img src="/img/8cf81d_4b2a1ddc270b68daf5c416588375111a.webp" class="card-img" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">titre de la peinture</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="flip-up" data-aos-duration="1100" data-aos-easing="linear">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                        <img src="/img/16358539_zero-gravity-01-61x24x10cm-2-3kg-iron-tufa-2022-450.jpeg" class="card-img" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Titre de la peinture</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        {% endfor %}
         </div>
     </div>
 </section>
 {% block javascripts %}
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({
-            });
+        AOS.init({});
     </script>
 {% endblock %}
