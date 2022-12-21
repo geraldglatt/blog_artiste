@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dernières réalisations{% endblock %}
+
+{% block body %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="mb-5 mt-5 text-center">
+                    Dernières réalisations
+                </h2>
+                <p class="mb-5 text-muted">
+                </p>
+            </div>
+        </div>
+        <div class="row">
+        {% for peinture in peintures %}
+            <div class="col-6">
+                <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="fade-up" data-aos-duration="1100" data-aos-easing="linear">
+                    <div class="row no-gutters">
+                        <div class="col-md-7">
+                        <img src="{{ peinture.file }}" class="card-img" alt="{{ peinture.nom }}">
+                        </div>
+                        <div class="col-md-5">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ peinture.nom }}</h5>
+                            <p class="card-text">{{ peinture.description | u.truncate(200, '...', false) }}</p>
+                            <p class="card-text"><small class="text-muted"> Ajoutée le {{ peinture.createdAt | date('d/m/Y')  }}</small></p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="fade-up" data-aos-duration="1100" data-aos-easing="linear">
+                    <div class="row no-gutters">
+                        <div class="col-md-7">
+                        <img src="{{ asset(peinture.file) }}" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-5">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ peinture.nom }}</h5>
+                            <p class="card-text">{{ peinture.description | u.truncate(200, '...', false) }}</p>
+                            <p class="card-text"><small class="text-muted"> Ajoutée le {{ peinture.createdAt | date('d/m/Y')  }}</small></p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        {{ knp_pagination_render(peintures, 'shared/pagination.html.twig') }}
+    </div>
+</section>
+{% endblock %}
+{% block javascripts %}
+   
+{% endblock %}
+
