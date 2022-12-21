@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="coouleur_nav">
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="./index.html">
+        <a class="navbar-brand" href="{{ path('app_home') }}">
             <img src="/img/profile_20210716-095310-2.jpeg" style="width:120px; heigth: 120px;" class="navbar-brand-img" alt="profile stephane paillot">
         </a>
 
@@ -15,14 +15,14 @@
                 <i class="fe fe-x"></i>
             </button>
 
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                    <a class="nav-link" href="{{ path('app_realisations') }}">
                         Réalisations
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                    <a class="nav-link" href="{{ path('app_actualites') }}">
                         Actualités
                     </a>
                 </li>
