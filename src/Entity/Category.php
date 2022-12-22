@@ -28,9 +28,13 @@ class Category
     #[ORM\ManyToMany(targetEntity: Peinture::class, mappedBy: 'categorie')]
     private Collection $peintures;
 
+    #[ORM\ManyToMany(targetEntity: Sculpture::class, mappedBy: 'categorie')]
+    private Collection $sculptures;
+
     public function __construct()
     {
         $this->peintures = new ArrayCollection();
+        $this->sculptures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -96,6 +100,33 @@ class Category
     {
         if ($this->peintures->removeElement($peinture)) {
             $peinture->removeCategorie($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sculpture>
+     */
+    public function getSculptures(): Collection
+    {
+        return $this->sculptures;
+    }
+
+    public function addSculpture(Sculpture $sculpture): self
+    {
+        if (!$this->sculptures->contains($sculpture)) {
+            $this->sculptures->add($sculpture);
+            $sculpture->addCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSculpture(Sculpture $sculpture): self
+    {
+        if ($this->sculptures->removeElement($sculpture)) {
+            $sculpture->removeCategorie($this);
         }
 
         return $this;

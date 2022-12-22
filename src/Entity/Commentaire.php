@@ -32,6 +32,9 @@ class Commentaire
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
     private ?BlogPost $blogPost = null;
 
+    #[ORM\ManyToOne(inversedBy: 'commentaires')]
+    private ?Sculpture $sculpture = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Commentaire
     public function setBlogPost(?BlogPost $blogPost): self
     {
         $this->blogPost = $blogPost;
+
+        return $this;
+    }
+
+    public function getSculpture(): ?Sculpture
+    {
+        return $this->sculpture;
+    }
+
+    public function setSculpture(?Sculpture $sculpture): self
+    {
+        $this->sculpture = $sculpture;
 
         return $this;
     }
