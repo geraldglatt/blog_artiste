@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PeintureController extends AbstractController
 {
-    #[Route('/realisations', name: 'app_realisations')]
+    #[Route('/peintures', name: 'app_peintures')]
     public function realisations(
         PeintureRepository $peintureRepository,
         PaginatorInterface $paginator,

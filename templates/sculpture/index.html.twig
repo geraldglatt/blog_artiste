@@ -39,11 +39,10 @@
         {% endfor %}
         </div>
     </div>
-</section>
+    <div class="d-flex justify-content-center">
+        {{ knp_pagination_render(sculptures, 'shared/pagination.html.twig') }}
+    </div>
+    </section>
 {% block javascripts %}
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({});
-    </script>
 {% endblock %}
 {% endblock %}
