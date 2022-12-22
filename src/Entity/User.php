@@ -51,10 +51,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: BlogPost::class, orphanRemoval: true)]
     private Collection $blogPosts;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Sculpture::class, orphanRemoval: true)]
+    private Collection $sculptures;
+
     public function __construct()
     {
         $this->peintures = new ArrayCollection();
         $this->blogPosts = new ArrayCollection();
+        $this->sculptures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -241,6 +245,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($blogPost->getUser() === $this) {
                 $blogPost->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sculpture>
+     */
+    public function getSculptures(): Collection
+    {
+        return $this->sculptures;
+    }
+
+    public function addSculpture(Sculpture $sculpture): self
+    {
+        if (!$this->sculptures->contains($sculpture)) {
+            $this->sculptures->add($sculpture);
+            $sculpture->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSculpture(Sculpture $sculpture): self
+    {
+        if ($this->sculptures->removeElement($sculpture)) {
+            // set the owning side to null (unless already changed)
+            if ($sculpture->getUser() === $this) {
+                $sculpture->setUser(null);
             }
         }
 

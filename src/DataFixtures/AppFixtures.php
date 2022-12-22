@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\BlogPost;
 use App\Entity\Category;
 use App\Entity\Peinture;
+use App\Entity\Sculpture;
 use Faker\Factory;
 use App\Entity\User;
 use DateTimeImmutable;
@@ -18,7 +19,7 @@ class AppFixtures extends Fixture
     protected $encoder;
     protected $slugger;
 
-    public function __construct(UserPasswordHasherInterface $hasher, SluggerInterface $slugger) 
+    public function __construct(UserPasswordHasherInterface $hasher, SluggerInterface $slugger)
     {
         $this->hasher = $hasher;
         $this->slugger = $slugger;
@@ -28,7 +29,7 @@ class AppFixtures extends Fixture
     {
         //utilisation de Faker
         $faker = Factory::create('fr_FR');
-        // 
+        //
         $user = new User();
 
         $user->setEmail('user@test.fr')
@@ -89,8 +90,31 @@ class AppFixtures extends Fixture
 
                 $manager->persist($peinture);
             }
-        }
 
+            //Création de 3 sculptures/categories
+            for ($l = 0; $l < 3; $l++) {
+                $sculpture = new Sculpture();
+
+                $sculpture->setNom($faker->words(3, true))
+                        ->setLargeur($faker->randomFloat(2, 20, 60))
+                        ->setHauteur($faker->randomFloat(2, 20, 60))
+                        ->setEnVente($faker->randomElement([true, false]))
+                        ->setDateRealisation(new DateTimeImmutable('-4 month'))
+                        ->setCreatedAt(new DateTimeImmutable('-2 month'))
+                        ->setDescription($faker->text(50))
+                        ->setPortfolio($faker->randomElement([true, false]))
+                        ->setSlug(strtolower($this->slugger->slug($sculpture->getNom())))
+                        ->setFile('/img/16358539_zero-gravity-01-61x24x10cm-2-3kg-iron-tufa-2022-450.jpeg')
+                        ->addCategorie($categorie)
+                        ->setPrix($faker->randomFloat(2, 100, 9999))
+                        ->setUser($user);
+
+                $manager->persist($sculpture);
+            }
+
+            
+        }
         $manager->flush();
+
     }
 }

@@ -5,6 +5,7 @@ namespace App\Tests;
 use App\Entity\BlogPost;
 use App\Entity\Commentaire;
 use App\Entity\Peinture;
+use App\Entity\Sculpture;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 
@@ -16,13 +17,15 @@ class CommentaireUnitTest extends TestCase
         $dateTime = new DateTimeImmutable();
         $blogPost = new BlogPost();
         $peinture = new Peinture();
+        $sculpture = new Sculpture();
 
         $commentaire->setAuteur('auteur')
                     ->setEmail('email@test.fr')
                     ->setContenu('contenu')
                     ->setCreatedAt($dateTime)
                     ->setBlogPost($blogPost)
-                    ->setPeinture($peinture);
+                    ->setPeinture($peinture)
+                    ->setSculpture($sculpture);
 
         $this->assertTrue($commentaire->getAuteur() === 'auteur');
         $this->assertTrue($commentaire->getEmail() === 'email@test.fr');
