@@ -3,18 +3,47 @@
 {% block title %}Hello SculptureController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+                <h2 class="mb-5 mt-5 text-center">
+                    Dernières sculptures réalisées
+                </h2>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/glatt/projets/creche_SucePouce/src/Controller/SculptureController.php'|file_link(0) }}">src/Controller/SculptureController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/glatt/projets/creche_SucePouce/templates/sculpture/index.html.twig'|file_link(0) }}">templates/sculpture/index.html.twig</a></code></li>
-    </ul>
-</div>
+                <p class="mb-5 text-muted">
+
+                </p>
+
+            </div>
+        </div>
+        <div class="row">
+        {% for sculpture in sculptures %}
+            <div class="col-12">
+                <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="flip-up" data-aos-duration="1100" data-aos-easing="linear">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                        <img src="{{ sculpture.file }}" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ sculpture.nom }}</h5>
+                            <p class="card-text">{{ sculpture.description | u.truncate(200, '...', false) }}</p>
+                            <p class="card-text"><small class="text-muted"> Ajoutée le {{ sculpture.createdAt | date('d/m/Y')  }}</small></p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+{% block javascripts %}
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({});
+    </script>
+{% endblock %}
 {% endblock %}
