@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Sculpture;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Sculpture>
@@ -51,28 +52,17 @@ class SculptureRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-//    /**
-//     * @return Sculpture[] Returns an array of Sculpture objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Sculpture
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * @return Sculpture[] Return an array of Sculpture objects
+     */
+    public function findAllPortfolio(Category $categorie): array 
+    {
+        return $this->createQueryBuilder('s')
+            ->where(':categorie MEMBER OF s.categorie')
+            ->andWhere('s.portfolio = TRUE')
+            ->setParameter('categorie', $categorie)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

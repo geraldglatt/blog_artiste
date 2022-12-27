@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio de Stéphane Paillot{% endblock %}
+
+{% block body %}
+    <section class="pt-5 pt-md-5 pb-5 pb-md-5 bg-grey-900">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-5 col-lg-5 text-center">
+                    <h1 class="display-2 fw-bold text-dark">Portfolio</h1>
+                </div>
+            </div>
+            <hr>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-5 col-lg-5 text-center">
+                    <h2 class="display-2 fw-bold text-dark">Peintures</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div>
+        <div>
+            <svg viewBox="0 0 2880 48" fill="none" xmlns="https://www.w3.org/2000/svg">
+        </div>
+    </div>
+    <section class="py-5 py-md-5 mt-n5 mt-md-5">
+        <div class="container">
+            <div class="row" id-"portfolio" data-isotope='{"layoutMode": "firRows"}'>
+                {% for categorie in categories %}
+                    {% set img = categorie.peintures | last %}
+                    <div class="col-12 col-md-4 ux">
+                        <a  class="card lift lift-lg shadow-light-lg mb-5" href="{{ path('app_portfolio_category', {'slug': categorie.slug}) }}">
+                        <img class="card-img-top" src="{{ img.file }}" alt="...">
+                        <div class="card-body">
+                            <div class="shape shape-bottom-100 shape-fluid-x svg-shim text-dark">
+                            <svg viewBox="0 0 2880 48" fill="none" xmlns="https://www.w3.org/2000/svg">
+                            </div>
+                            <h4 class="mb-0">{{ categorie.nom }}</h4>
+                            <small>{{ categorie.description }}</small>
+                        </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="pt-5 pt-md-5 pb-5 pb-md-5 bg-grey-900">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-5 col-lg-5 text-center">
+                    <h2 class="display-2 fw-bold text-dark">Sculptures</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 py-md-5 mt-n5 mt-md-5">
+        <div class="container">
+            <div class="row" id-"portfolio" data-isotope='{"layoutMode": "firRows"}'>
+                {% for categorie in categories %}
+                    {% set img = categorie.sculptures | last %}
+                    <div class="col-12 col-md-4 ux">
+                        <a  class="card lift lift-lg shadow-light-lg mb-5" href="">
+                        <img class="card-img-top" src="{{ img.file }}" alt="...">
+                        <div class="card-body">
+                            <div class="shape shape-bottom-100 shape-fluid-x svg-shim text-dark">
+                            <svg viewBox="0 0 2880 48" fill="none" xmlns="https://www.w3.org/2000/svg">
+                            </div>
+                            <h4 class="mb-0">{{ categorie.nom }}</h4>
+                            <small>{{ categorie.description }}</small>
+                        </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
