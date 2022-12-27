@@ -6,9 +6,8 @@ import './bootstrap';
 
 import { Tooltip, Toast, Popover } from 'bootstrap';
 
-import './js/theme';
-
 import AOS from 'aos'; 
+
 
 
 
@@ -34,3 +33,5 @@ AOS.init({
     anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
   
   });
+
+

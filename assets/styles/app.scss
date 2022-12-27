@@ -8,7 +8,7 @@ body, html {
   }
 
   @include mediaquerries(xs) {
-    #parallax {
+    .jarallax {
         height: 70%;
         background-attachment: fixed;
         object-fit: cover;
@@ -18,7 +18,7 @@ body, html {
   }
 
   @include mediaquerries(sm) {
-    #parallax {
+    .jarallax {
         height: 70%;
         background-attachment: fixed;
         object-fit: cover;
@@ -28,7 +28,7 @@ body, html {
   }
 
   @include mediaquerries(md) {
-    #parallax {
+    .jarallax {
         height: 70%;
         background-attachment: fixed;
         object-fit: cover;
@@ -38,8 +38,8 @@ body, html {
   }
 
   @include mediaquerries(lg) {
-    #parallax {
-      height: 70%;
+    .jarallax {
+      height: 80%;
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
