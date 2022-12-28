@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\BlogPost;
 use App\Repository\BlogPostRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,6 +28,15 @@ class BlogPostController extends AbstractController
 
         return $this->render('blogpost/actualites.html.twig', [
             'actualites' => $actualites,
+        ]);
+    }
+
+    #[Route('/actualites/{slug}', name: 'app_actualite_detail')]
+    public function details(BlogPost $blogpost)
+    : Response
+    {
+        return $this->render('blogpost/actualite.html.twig', [
+            'blogpost' => $blogpost,
         ]);
     }
 }

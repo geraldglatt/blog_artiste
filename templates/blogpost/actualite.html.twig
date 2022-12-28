@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualité{% endblock %}
+
+{% block body %}
+    <!-- Header -->
+    <section class="pt-8 pt-md-11">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+                    <h1 class="display-4 text-center">
+                        {{ blogpost.titre }}
+                    </h1>
+                    <div class="row align-items-center py-5 border-top border-bottom">
+                        <div class="col-auto">
+                        </div>
+                        <div class="col ms-n5">
+                            <time class="fs-sm text-muted" datetime="2019-05-20">
+                                Publié le {{ blogpost.createdAt |date('d/m/Y') }}
+                            </time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pt-6 pt-md-8">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+                    <p class="mb-5">
+                        {{ blogpost.contenu }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
