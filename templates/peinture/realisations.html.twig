@@ -3,11 +3,11 @@
 {% block title %} Peintures{% endblock %}
 
 {% block body %}
-<section>
+<section class="pt-5 pt-md-10">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="mb-5 mt-5 text-center">
+                <h2 class="mb-4 mt-4 text-center">
                     Dernières peintures réalisées
                 </h2>
                 <p class="mb-5 text-muted">
@@ -16,11 +16,13 @@
         </div>
         <div class="row">
         {% for peinture in peintures %}
-            <div class="col-6">
+            <div class="col-6 d-flex">
                 <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="fade-up" data-aos-duration="1100" data-aos-easing="linear">
                     <div class="row no-gutters">
                         <div class="col-md-7">
-                        <img src="{{ peinture.file }}" class="card-img" alt="{{ peinture.nom }}">
+                            <a href="{{ path('app_peintures_realisations', {'slug': peinture.slug}) }}">
+                                <img src="{{ asset(peinture.file) }}" class="card-img" alt="{{ peinture.nom }}">
+                            </a>
                         </div>
                         <div class="col-md-5">
                         <div class="card-body">
@@ -36,7 +38,9 @@
                 <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="fade-up" data-aos-duration="1100" data-aos-easing="linear">
                     <div class="row no-gutters">
                         <div class="col-md-7">
-                        <img src="{{ asset(peinture.file) }}" class="card-img" alt="...">
+                            <a href="{{ path('app_peintures_realisations', {'slug': peinture.slug}) }}">
+                                <img src="{{ asset(peinture.file) }}" class="card-img" alt="{{ peinture.nom }}">
+                            </a>
                         </div>
                         <div class="col-md-5">
                         <div class="card-body">

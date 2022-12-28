@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réalisation{% endblock %}
+
+{% block body %}
+    <!-- content -->
+    <div class="container px-md-1">
+        <div class="row justify-content-between gx-0 mx-md-0 mb-5 mb-md-2">
+            <div class="col-12 col-md-5 vh-md-100 mx-auto pl-2" style="top: 0;">
+                <aside class="flex-grow-1 py-4 py-md-4">
+                     <div>
+                        <h2>{{ sculpture.nom }}</h2>
+                        {% for categorie in sculpture.categorie %}
+                            <span class="badge bg-secondary">{{ categorie.nom }}</span>
+                        {% endfor %}
+                     </div>
+                     <p class="fs-lg mb-5 text-muted">
+                        {{ sculpture.description }}
+                    </p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <h6 class="d-flex mb-2 mt-2 text-uppercase">
+                                Date de réalisation
+                                <span class="ms-auto">{{ sculpture.dateRealisation |date('d/m/Y') }}</span>
+                            </h6>
+                        </li>
+                        <li class="list-group-item">
+                            <h6 class="d-flex mb-2 mt-2 text-uppercase">
+                                Largeur
+                                <span class="ms-auto">{{ sculpture.largeur}} Cm</span>
+                            </h6>
+                        </li>
+                        <li class="list-group-item">
+                            <h6 class="d-flex mb-2 mt-2 text-uppercase">
+                                Hauteur
+                                <span class="ms-auto">{{ sculpture.hauteur}} Cm</span>
+                            </h6>
+                        </li>
+                        {% if sculpture.enVente %}
+                            <li class="list-group-item">
+                            <h6 class="d-flex mb-2 mt-2 text-uppercase">
+                                <strong>Disponible à la vente</strong>
+                                <span class="ms-auto"><strong>{{ sculpture.prix}}</strong> €</span>
+                            </h6>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </aside>
+            </div>
+            <div class="col-12 col-md-7 mb-5">
+                <section class="d-flex justify-content-center">
+                    <img class="align-self-center" style="" src="{{ asset(sculpture.file) }}" alt="{{ sculpture.nom }}">
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}
