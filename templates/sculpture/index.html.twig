@@ -24,7 +24,9 @@
                 <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="flip-up" data-aos-duration="1100" data-aos-easing="linear">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                        <img src="{{ sculpture.file }}" class="card-img" alt="...">
+                        <a href="{{ path('app_sculpture_realisation', {'slug': sculpture.slug}) }}">
+                            <img src="{{ asset(sculpture.file) }}" class="card-img" alt="{{ sculpture.nom }}">
+                        </a>
                         </div>
                         <div class="col-md-8">
                         <div class="card-body">

@@ -19,13 +19,17 @@
                 <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="flip-up" data-aos-duration="1100" data-aos-easing="linear">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                        <img src="{{ sculpture.file }}" class="card-img" alt="...">
+                            <a href="{{ path('app_sculpture_realisation', {'slug': sculpture.slug}) }}">
+                                <img src="{{ sculpture.file }}" class="card-img" alt="{{ sculpture.nom }}">
+                            </a>
                         </div>
                         <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">{{ sculpture.nom }}</h5>
-                            <p class="card-text">{{ sculpture.description | u.truncate(200, '...', false) }}</p>
-                            <p class="card-text"><small class="text-muted"> Ajoutée le {{ sculpture.createdAt | date('d/m/Y')  }}</small></p>
+                            <a href="{{ path('app_sculpture_realisation', {'slug': sculpture.slug}) }}">
+                                <h5 class="card-title">{{ sculpture.nom }}</h5>
+                                <p class="card-text">{{ sculpture.description | u.truncate(200, '...', false) }}</p>
+                                <p class="card-text"><small class="text-muted"> Ajoutée le {{ sculpture.createdAt | date('d/m/Y')  }}</small></p>
+                            </a>
                         </div>
                         </div>
                     </div>
