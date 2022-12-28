@@ -18,11 +18,11 @@
             <div class="col-12 col-lg-4 d-flex">
                 <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="fade-up" data-aos-duration="700" data-aos-easing="linear">
                     <div class="col-md-8">
-                        <a class="card-body my-auto" href="!#">
+                        <a class="card-body my-auto" href="{{ path('app_actualite_detail', {'slug': actualite.slug}) }}">
                             <h3 class="mt-auto">{{ actualite.titre }}</h3>
                             <p class="card-text">{{ actualite.contenu | u.truncate(175, '...', false) }}</p>
                         </a>
-                        <a class="card-meta" href="!#">
+                        <a class="card-meta" href="{{ path('app_actualite_detail', {'slug': actualite.slug}) }}">
                             <div class="card-footer">
                                 <small class="text-muted"> Ajoutée le {{ actualite.createdAt | date('d/m/Y') }}</small>
                             </div>
