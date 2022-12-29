@@ -25,7 +25,7 @@
                     <div class="row no-gutters">
                         <div class="col-md-4">
                         <a href="{{ path('app_sculpture_realisation', {'slug': sculpture.slug}) }}">
-                            <img src="{{ asset(sculpture.file) }}" class="card-img" alt="{{ sculpture.nom }}">
+                            <img src="{{ vich_uploader_asset(sculpture, 'imageFile') }}" class="card-img" alt="{{ sculpture.nom }}">
                         </a>
                         </div>
                         <div class="col-md-8">

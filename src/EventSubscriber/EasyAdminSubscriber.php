@@ -3,6 +3,8 @@
 namespace App\EventSubscriber;
 
 use App\Entity\BlogPost;
+use App\Entity\Peinture;
+use App\Entity\Sculpture;
 use DateTimeImmutable;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -23,25 +25,37 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            BeforeEntityPersistedEvent::class => ['setBlogPostSlugAndDateAndUser']
+            BeforeEntityPersistedEvent::class => ['setDateAndUser']
         ];
     }
 
-    public function setBlogPostSlugAndDateAndUser(BeforeEntityPersistedEvent $event)
+    public function setDateAndUser(BeforeEntityPersistedEvent $event)
     {
         $entity = $event->getEntityInstance();
 
-        if(!($entity instanceof BlogPost)){
-            return;
+        if(($entity instanceof BlogPost)){
+            $now = new DateTimeImmutable('now');
+            $entity->getCreatedAt($now);
+    
+            $user = $this->security->getUser();
+            $entity->setUser($user);
         }
 
-        $slug = $this->slugger->slug($entity->getTitre());
-        $entity->setSlug($slug);
+        if(($entity instanceof Peinture)){
+            $now = new DateTimeImmutable('now');
+            $entity->getCreatedAt($now);
+    
+            $user = $this->security->getUser();
+            $entity->setUser($user);
+        }
 
-        $now = new DateTimeImmutable('now');
-        $entity->getCreatedAt($now);
+        if(($entity instanceof Sculpture)){
+            $now = new DateTimeImmutable('now');
+            $entity->getCreatedAt($now);
+    
+            $user = $this->security->getUser();
+            $entity->setUser($user);
+        }
 
-        $user = $this->security->getUser();
-        $entity->setUser($user);
     }
 }

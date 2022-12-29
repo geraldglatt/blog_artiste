@@ -25,3 +25,6 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+/public/uploads/peintures/*
+!/public/uploads/peintures/8cf81d_d7b4ff0e1e5ddc7b7e7c5ec8bc23e2a1.webp
+!/public/uploads/sculptures/16358539_zero-gravity-01-61x24x10cm-2-3kg-iron-tufa-2022-450.jpeg
