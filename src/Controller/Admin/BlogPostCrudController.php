@@ -23,7 +23,7 @@ class BlogPostCrudController extends AbstractCrudController
            TextField::new('titre'),
            TextField::new('slug')->hideOnForm(),
            TextareaField::new('contenu'),
-           DateField::new('createdAt')->hideOnForm(),
+           DateField::new('createdAt'),
 
         ];
     }
