@@ -3,8 +3,8 @@
 {% block title %}Portfolio de Stéphane Paillot{% endblock %}
 
 {% block body %}
-    {% set img = categorie.peintures | last %}
-    <section class="pt-5 pt-md-5 pb-5 overlay overlay-black">
+    {% set peinture = categorie.peintures | last %}
+    <section class="pt-5 pt-md-5 pb-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 col-lg-5 text-center">
@@ -21,11 +21,11 @@
     <hr>
     <section class="py-8 py-md-11 mt-nd10 mt-md-n14">
         <div class="container">
-            <div class="row" id="portfolio" data-isotope='{"layoutMode": "masonry"}'>
+            <div class="row">
                 {% for peinture in peintures %}
-                    <a class="card shadow-light mb-5" href="#!" data-bigpicture='{"imgSrc": "{{peinture.nom}}"}'>
+                    <a class="card shadow-light mb-5" href="#!">
                         <div class="card-zoom">
-                            <img class="card-img" src="{{ peinture.file }}" alt="...">
+                            <img class="card-img" src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="{{ peinture.nom}}">
                         </div>
                     </a>
                 {% endfor %}

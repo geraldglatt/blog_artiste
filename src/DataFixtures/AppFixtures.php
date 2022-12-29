@@ -84,7 +84,7 @@ class AppFixtures extends Fixture
                         ->setDescription($faker->text(50))
                         ->setPortfolio($faker->randomElement([true, false]))
                         ->setSlug(strtolower($this->slugger->slug($peinture->getNom())))
-                        ->setFile('/img/8cf81d_d7b4ff0e1e5ddc7b7e7c5ec8bc23e2a1.webp')
+                        ->setFile('8cf81d_d7b4ff0e1e5ddc7b7e7c5ec8bc23e2a1.webp')
                         ->addCategorie($categorie)
                         ->setPrix($faker->randomFloat(2, 100, 9999))
                         ->setUser($user);
@@ -105,7 +105,7 @@ class AppFixtures extends Fixture
                         ->setDescription($faker->text(50))
                         ->setPortfolio($faker->randomElement([true, false]))
                         ->setSlug(strtolower($this->slugger->slug($sculpture->getNom())))
-                        ->setFile('/img/16358539_zero-gravity-01-61x24x10cm-2-3kg-iron-tufa-2022-450.jpeg')
+                        ->setFile('16358539_zero-gravity-01-61x24x10cm-2-3kg-iron-tufa-2022-450.jpeg')
                         ->addCategorie($categorie)
                         ->setPrix($faker->randomFloat(2, 100, 9999))
                         ->setUser($user);

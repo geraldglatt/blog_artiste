@@ -2,13 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\SculptureRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\SculptureRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: SculptureRepository::class)]
+#[Vich\Uploadable]
 class Sculpture
 {
     #[ORM\Id]
@@ -48,6 +51,9 @@ class Sculpture
 
     #[ORM\Column(length: 255)]
     private ?string $file = null;
+
+    #[Vich\UploadableField(mapping: 'sculpture_images', fileNameProperty: 'file')]
+    private ?File $imageFile = null;
 
     #[ORM\ManyToOne(inversedBy: 'sculptures')]
     #[ORM\JoinColumn(nullable: false)]
@@ -200,6 +206,22 @@ class Sculpture
         $this->file = $file;
 
         return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $file = null): void
+    {
+        $this->imageFile = $file;
+
+        if ($file) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->createdAt = new \DateTimeImmutable('now');
+        }
     }
 
     public function getUser(): ?User
