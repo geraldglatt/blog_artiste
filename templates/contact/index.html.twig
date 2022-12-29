@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formview 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Page contact{% endblock %}
+
+{% block body %}
+    <section class="container d-flex flex-column mb-5">
+        <div class="row align-items-center justify-content-between gx-3 min-vh-75">
+            <div class="col-12 col-md-5 align-self-stretch">
+                <img class="img-cover" src="" alt="">
+                <div class="d-md-block d-sm-none w-100 vh-75 float-start bg-cover" 
+                    style="background-image: 
+                    url('/img/8cf81d_d7b4ff0e1e5ddc7b7e7c5ec8bc23e2a1.webp'); 
+                    background-repeat: no-repeat; 
+                    background-attachment: fixed; 
+                    background-size: cover;
+                    background-position: center;
+                    min-height: 100%;">
+                </div>
+            </div>
+            <div class="col-12 col-md-6 py-1 py-md-1">
+                <h2 class="fw-bold text-center mb-2">
+                    Me contacter
+                </h2>
+                <p class="fs-lg text-center text-muted mb-0">
+                    Une question? N'hésitez pas à me contacter.
+                </p>
+                <hr class="hr-sm my-5 my-md-5 mx-auto bg-grey-100">
+                    {{ form_start((formview)) }}
+
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    <div class="my-custom-class-for-errors">
+                        {{ form_errors(formview) }}
+                    </div>
+                    <div class="form-group mb-2">
+                        <label class="form-label" for="contactName">
+                            {{ form_label(formview.nom) }}
+                        </label>
+                        {{ form_widget(formview.nom) }} 
+                    </div>
+                    <div class="form-group mb-2">
+                        <label class="form-label" for="contactEmail">
+                            {{ form_label(formview.email) }}
+                        </label>
+                        {{ form_widget(formview.email) }} 
+                    </div>
+                    <div class="form-group mb-2">
+                        <label class="form-label" for="contactMessager">
+                            {{ form_label(formview.message) }}
+                        </label>
+                        {{ form_widget(formview.message) }} 
+                    </div>
+                    <div class="form-group mb-0">
+                        {{ form_widget(formview.envoyer) }}
+                    </div>
+
+                    {{ form_end(formview) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

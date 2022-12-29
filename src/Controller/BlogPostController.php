@@ -13,10 +13,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlogPostController extends AbstractController
 {
     #[Route('/actualites', name: 'app_actualites')]
-    public function actualites(BlogPostRepository $blogPostRepository,
-    PaginatorInterface $paginatorInterface,
-    Request $request)
-    : Response
+    public function actualites(
+        BlogPostRepository $blogPostRepository,
+        PaginatorInterface $paginatorInterface,
+        Request $request
+    ): Response
     {
         $datas = $blogPostRepository->findBy([], ['createdAt' => 'DESC']);
 
@@ -32,8 +33,7 @@ class BlogPostController extends AbstractController
     }
 
     #[Route('/actualites/{slug}', name: 'app_actualite_detail')]
-    public function details(BlogPost $blogpost)
-    : Response
+    public function details(BlogPost $blogpost): Response
     {
         return $this->render('blogpost/actualite.html.twig', [
             'blogpost' => $blogpost,

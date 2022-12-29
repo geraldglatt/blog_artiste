@@ -14,18 +14,17 @@ class SculptureController extends AbstractController
 {
     #[Route('/sculpture', name: 'app_sculpture')]
     public function sculpture(
-    SculptureRepository $sculptureRepository,
-    Request $request,
-    PaginatorInterface $paginatorInterface
-     ): Response
-    {
-    $datas = $sculptureRepository->findBy([], ['createdAt' => 'DESC']);
+        SculptureRepository $sculptureRepository,
+        Request $request,
+        PaginatorInterface $paginatorInterface
+    ): Response {
+        $datas = $sculptureRepository->findBy([], ['createdAt' => 'DESC']);
 
-    $sculptures = $paginatorInterface->paginate(
-        $datas,
-        $request->query->getInt('Page', 1),
-        3
-    );
+        $sculptures = $paginatorInterface->paginate(
+            $datas,
+            $request->query->getInt('Page', 1),
+            3
+        );
 
         return $this->render('sculpture/index.html.twig', [
             'sculptures' => $sculptures,
@@ -33,7 +32,7 @@ class SculptureController extends AbstractController
     }
 
     #[Route('/sculpture/{slug}', name: 'app_sculpture_realisation')]
-    public function details(Sculpture $sculpture): Response 
+    public function details(Sculpture $sculpture): Response
     {
         return $this->render('sculpture/details.html.twig', [
             'sculpture' => $sculpture

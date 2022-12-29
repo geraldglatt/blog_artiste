@@ -26,3 +26,12 @@ php bin/phpunit --testdox
 ’’’bash
 symfony console doctrine:fixtures:load ou symfony console d:f:l
 ’’’
+
+## Production
+### Envoie des mails de contact
+
+Les mails de prise de contact sont stockés en BDD, pour les envoyer à l'artiste par mail , il faut mettre un cron sur :
+
+’’’bash
+symfony console app:send-contact
+’’’
