@@ -25,22 +25,23 @@ class PortfolioController extends AbstractController
     #[Route('/portfolio/{slug}', name: 'app_portfolio_category')]
     public function categorie(
         $slug,
-        Category $categorie, 
+        Category $categorie,
         PeintureRepository $peintureRepository,
         SculptureRepository $sculptureRepository,
-        CategoryRepository $categoryRepository)
-        {
-            $category = $categoryRepository->findAll();
-            $peintures = $peintureRepository->findAllPortfolio($categorie);
-            $sculptures = $sculptureRepository->findAllPortfolio($categorie);
+        CategoryRepository $categoryRepository
+    )
+    {
+        $category = $categoryRepository->findAll();
+        $peintures = $peintureRepository->findAllPortfolio($categorie);
+        $sculptures = $sculptureRepository->findAllPortfolio($categorie);
 
-            return $this->render('portfolio/categorie.html.twig', [
-                'categorie' => $categorie,
-                'peintures' => $peintures,
-                '$sculptures' => $sculptures,
-                'categoryRepository' => $categoryRepository,
-                'category' => $category,
-                'slug' => $slug
-            ]);
-        }
+        return $this->render('portfolio/categorie.html.twig', [
+            'categorie' => $categorie,
+            'peintures' => $peintures,
+            '$sculptures' => $sculptures,
+            'categoryRepository' => $categoryRepository,
+            'category' => $category,
+            'slug' => $slug
+        ]);
+    }
 }

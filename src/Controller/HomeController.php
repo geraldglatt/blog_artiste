@@ -12,9 +12,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/home', name: 'app_home')]
-    public function index(PeintureRepository $peintureRepository,
-    BlogPostRepository $blogPostRepository,
-    SculptureRepository $sculptureRepository): Response
+    public function index(
+        PeintureRepository $peintureRepository,
+        BlogPostRepository $blogPostRepository,
+        SculptureRepository $sculptureRepository
+    ): Response
     {
         $peinture = $peintureRepository->lastThree();
         $blogPosts = $blogPostRepository->lastThreeBlogPost();
