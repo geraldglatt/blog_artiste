@@ -1,0 +1,52 @@
+@import "variables";
+@import "~bootstrap/scss/bootstrap";
+@import "mixins";
+@import "../../node_modules/bootstrap/scss/variables";
+
+body, html {
+    height: 100%;
+  }
+
+  @include mediaquerries(xs) {
+    .jarallax {
+        height: 70%;
+        background-attachment: fixed;
+        object-fit: cover;
+        background-repeat: no-repeat;
+      }
+
+  }
+
+  @include mediaquerries(sm) {
+    .jarallax {
+        height: 70%;
+        background-attachment: fixed;
+        object-fit: cover;
+        background-repeat: no-repeat;
+      }
+
+  }
+
+  @include mediaquerries(md) {
+    .jarallax {
+        height: 70%;
+        background-attachment: fixed;
+        object-fit: cover;
+        background-repeat: no-repeat;
+      }
+
+  }
+
+  @include mediaquerries(lg) {
+    .jarallax {
+      height: 80%;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      
+      
+      }
+
+    
+  }

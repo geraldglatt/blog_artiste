@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio de Stéphane Paillot{% endblock %}
+
+{% block body %}
+    {% set img = categorie.peintures | last %}
+    <section class="pt-5 pt-md-5 pb-5 overlay overlay-black">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-5 col-lg-5 text-center">
+                    <h1 class="display-2 fw-bold text-dark">
+                        {{ categorie.nom }}
+                    </h1>
+                    <p class="lead text-white-75 mb-4">
+                        {{ categorie.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="py-8 py-md-11 mt-nd10 mt-md-n14">
+        <div class="container">
+            <div class="row" id="portfolio" data-isotope='{"layoutMode": "masonry"}'>
+                {% for peinture in peintures %}
+                    <a class="card shadow-light mb-5" href="#!" data-bigpicture='{"imgSrc": "{{peinture.nom}}"}'>
+                        <div class="card-zoom">
+                            <img class="card-img" src="{{ peinture.file }}" alt="...">
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
