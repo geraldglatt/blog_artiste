@@ -24,8 +24,8 @@
             <div class="row">
                 {% for peinture in peintures %}
                     <a class="card shadow-light mb-5" href="#!">
-                        <div class="card-zoom">
-                            <img class="card-img" src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="{{ peinture.nom}}">
+                        <div class="card">
+                            <img style="width:500px; heigth: 500px;" class="card-img" src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="{{ peinture.nom}}">
                         </div>
                     </a>
                 {% endfor %}
