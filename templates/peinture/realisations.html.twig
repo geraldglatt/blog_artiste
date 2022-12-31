@@ -21,7 +21,7 @@
                     <div class="row no-gutters">
                         <div class="col-md-4">
                         <a href="{{ path('app_peintures_realisations', {'slug': peinture.slug})}}">
-                            <img src="{{ vich_uploader_asset(peinture, 'imageFile') | imagine_filter('size') }}" class="card-img" alt="{{ peinture.nom }}">
+                            <img src="{{ vich_uploader_asset(peinture, 'imageFile') }}" class="card-img" alt="{{ peinture.nom }}">
                         </a>
                         </div>
                         <div class="col-md-8">
