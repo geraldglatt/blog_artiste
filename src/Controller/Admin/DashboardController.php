@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\BlogPost;
+use App\Entity\Commentaire;
 use App\Entity\Peinture;
 use App\Entity\Sculpture;
 use App\Entity\User;
@@ -32,6 +33,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Actualités', 'fas fa-newspaper', BlogPost::class);
         yield MenuItem::linkToCrud('Peintures', 'fas fa-paint-brush', Peinture::class);
         yield MenuItem::linkToCrud('Sculptures', 'fas fa-paint-brush', Sculpture::class);
+        yield MenuItem::linkToCrud('Commentaires', 'fas fa-comment', Commentaire::class);
         yield MenuItem::linkToCrud('Paramètres', 'fas fa-cog', User::class);
     }
 }

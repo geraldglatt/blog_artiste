@@ -1,10 +1,10 @@
 import './styles/app.scss';
 
-import './bootstrap';
-
 // start the Stimulus application
 
 import { Tooltip, Toast, Popover } from 'bootstrap';
+
+import './bootstrap';
 
 import AOS from 'aos'; 
 
@@ -33,5 +33,6 @@ AOS.init({
     anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
   
   });
+
 
 

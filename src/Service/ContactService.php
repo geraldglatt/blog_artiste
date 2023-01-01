@@ -5,13 +5,10 @@ namespace App\Service;
 use DateTimeImmutable;
 use App\Entity\Contact;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-
 
 class ContactService
 {
     private $em;
-    private $flash;
 
     public function __construct(EntityManagerInterface $em)
     {
