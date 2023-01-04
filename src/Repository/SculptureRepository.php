@@ -55,7 +55,7 @@ class SculptureRepository extends ServiceEntityRepository
     /**
      * @return Sculpture[] Return an array of Sculpture objects
      */
-    public function findAllPortfolio(Category $categorie): array 
+    public function findAllSculpturePortfolio(Category $categorie): array 
     {
         return $this->createQueryBuilder('s')
             ->where(':categorie MEMBER OF s.categorie')

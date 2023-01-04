@@ -18,7 +18,7 @@
 
             </div>
         </div>
-        <div class="row">
+        <div class="row flex-column">
         {% for sculpture in sculptures %}
             <div class="col-12">
                 <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="flip-up" data-aos-duration="1100" data-aos-easing="linear">
@@ -28,7 +28,7 @@
                             <img src="{{ vich_uploader_asset(sculpture, 'imageFile') }}" class="card-img" alt="{{ sculpture.nom }}">
                         </a>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 align-self-center">
                         <div class="card-body">
                             <h5 class="card-title">{{ sculpture.nom }}</h5>
                             <p class="card-text">{{ sculpture.description | u.truncate(200, '...', false) }}</p>

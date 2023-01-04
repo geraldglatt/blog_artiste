@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\Peinture;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -23,7 +24,7 @@ class CategoryCrudController extends AbstractCrudController
         return [
             TextField::new('nom'),
             TextareaField::new('description'),
-            SlugField::new('slug')->setTargetFieldName('nom')
+            SlugField::new('slug')->setTargetFieldName('nom'),
 
         ];
     }
