@@ -22,10 +22,10 @@
         <div class="container">
             <div class="row" id-"portfolio" data-isotope='{"layoutMode": "firRows"}'>
                 {% for categorie in categories %}
-                    {% set peinture = categorie.peintures | last %}
+                    {% set peinture = categorie.peintures|last %}
                     <div class="col-12 col-md-4 ux">
                         <a  class="card lift lift-lg shadow-light-lg mb-5" href="{{ path('app_portfolio_category', {'slug': categorie.slug}) }}">
-                        <img class="card-img-top justify-content-center" src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="{{ peinture.nom }}">
+                        <img class="card-img-top justify-content-center" src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="{{ categorie.nom }}">
                         <div class="card-body">
                             <div class="shape shape-bottom-100 shape-fluid-x svg-shim text-dark">
                         </div>
@@ -52,10 +52,10 @@
         <div class="container">
             <div class="row" id-"portfolio" data-isotope='{"layoutMode": "firRows"}'>
                 {% for categorie in categories %}
-                    {% set sculpture = categorie.sculptures | last %}
+                    {% set sculpture = categorie.sculptures|last %}
                     <div class="col-12 col-md-4 ux">
-                        <a  class="card lift lift-lg shadow-light-lg mb-5" href="">
-                        <img class="card-img-top" src="{{ vich_uploader_asset(sculpture, 'imageFile') }}" alt="{{ sculpture.nom }}">
+                        <a  class="card lift lift-lg shadow-light-lg mb-5" href="{{ path('app_portfolio_category', {'slug': categorie.slug}) }}">
+                        <img class="card-img-top" src="{{ vich_uploader_asset(sculpture, 'imageFile') }}" alt="{{ categorie.nom }}">
                         <div class="card-body">
                             <div class="shape shape-bottom-100 shape-fluid-x svg-shim text-dark">
                         </div>

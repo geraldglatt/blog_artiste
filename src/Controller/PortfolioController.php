@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Peinture;
+use App\Entity\Sculpture;
 use App\Repository\CategoryRepository;
 use App\Repository\PeintureRepository;
 use App\Repository\SculptureRepository;
@@ -13,7 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class PortfolioController extends AbstractController
 {
     #[Route('/portfolio', name: 'app_portfolio')]
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(
+        CategoryRepository $categoryRepository,
+    ): Response
     {
         $categories = $categoryRepository->findAll();
 
@@ -25,22 +29,21 @@ class PortfolioController extends AbstractController
     #[Route('/portfolio/{slug}', name: 'app_portfolio_category')]
     public function categorie(
         $slug,
-        Category $categorie,
+        Category $category,
         PeintureRepository $peintureRepository,
         SculptureRepository $sculptureRepository,
         CategoryRepository $categoryRepository
     )
     {
-        $category = $categoryRepository->findAll();
-        $peintures = $peintureRepository->findAllPortfolio($categorie);
-        $sculptures = $sculptureRepository->findAllPortfolio($categorie);
+        $categorie = $categoryRepository->findAll();
+        $peintures = $peintureRepository->findAllPortfolio($category);
+        $sculptures = $sculptureRepository->findAllPortfolio($category);
 
         return $this->render('portfolio/categorie.html.twig', [
-            'categorie' => $categorie,
-            'peintures' => $peintures,
-            '$sculptures' => $sculptures,
-            'categoryRepository' => $categoryRepository,
             'category' => $category,
+            'peintures' => $peintures,
+            'sculptures' => $sculptures,
+            'categorie' => $categorie,
             'slug' => $slug
         ]);
     }
