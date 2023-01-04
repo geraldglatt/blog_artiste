@@ -56,6 +56,7 @@ class EasyAdminSubscriber implements EventSubscriberInterface
             $user = $this->security->getUser();
             $entity->setUser($user);
         }
+    return;
 
     }
 }

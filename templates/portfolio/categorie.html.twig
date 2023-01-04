@@ -3,16 +3,16 @@
 {% block title %}Portfolio de Stéphane Paillot{% endblock %}
 
 {% block body %}
-    {% set peinture = categorie.peintures | last %}
+    {% set peinture = category.peintures | last %}
     <section class="pt-5 pt-md-5 pb-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 col-lg-5 text-center">
                     <h1 class="display-2 fw-bold text-dark">
-                        {{ categorie.nom }}
+                        {{ category.nom }}
                     </h1>
                     <p class="lead text-white-75 mb-4">
-                        {{ categorie.description }}
+                        {{ category.description }}
                     </p>
                 </div>
             </div>
