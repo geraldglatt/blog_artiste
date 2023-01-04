@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-use App\Entity\Peinture;
-use App\Entity\Sculpture;
 use App\Repository\CategoryRepository;
 use App\Repository\PeintureRepository;
 use App\Repository\SculptureRepository;
@@ -16,7 +14,7 @@ class PortfolioController extends AbstractController
 {
     #[Route('/portfolio', name: 'app_portfolio')]
     public function index(
-        CategoryRepository $categoryRepository,
+        CategoryRepository $categoryRepository
     ): Response
     {
         $categories = $categoryRepository->findAll();
@@ -35,9 +33,15 @@ class PortfolioController extends AbstractController
         CategoryRepository $categoryRepository
     )
     {
-        $categorie = $categoryRepository->findAll();
-        $peintures = $peintureRepository->findAllPortfolio($category);
-        $sculptures = $sculptureRepository->findAllPortfolio($category);
+        $categorie = $categoryRepository->findOneBy([
+            'slug' => $slug
+        ]);
+        $peintures = $peintureRepository->findAllPeinturePortfolio($category);
+        $sculptures = $sculptureRepository->findAllSculpturePortfolio($category);
+
+        if(!$categorie) {
+            throw $this->createNotFoundException('La catégorie demandée n\'existe pas');
+        }
 
         return $this->render('portfolio/categorie.html.twig', [
             'category' => $category,

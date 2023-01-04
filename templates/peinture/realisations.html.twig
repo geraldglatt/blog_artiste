@@ -3,7 +3,7 @@
 {% block title %} Peintures{% endblock %}
 
 {% block body %}
-<section class="pt-5 pt-md-10">
+<section class="pt-5 pt-md-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -11,26 +11,29 @@
                     Dernières peintures réalisées
                 </h2>
                 <p class="mb-5 text-center text-muted">
-                Voic mes dernières peintures
+                Voici mes dernières peintures
                 </p>
             </div>
         </div>
         <div class="row">
         {% for peinture in peintures %}
-            <div class="col-12 d-flex">
+            <div class="col-12 d-flex h-100">
                 <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="flip-up" data-aos-duration="1100" data-aos-easing="linear">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
+                    <div class="row no-gutters mx-auto">
+                        <div class="col-md-6">
                         <a href="{{ path('app_peintures_realisations', {'slug': peinture.slug})}}">
-                            <img src="{{ vich_uploader_asset(peinture, 'imageFile') }}" class="card-img" alt="{{ peinture.nom }}">
+                            <img src="{{ vich_uploader_asset(peinture, 'imageFile') }}" 
+                            class="figure-img img-fluid rounded" 
+                            alt="{{ peinture.nom }}"
+                            >
                         </a>
                         </div>
-                        <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ peinture.nom }}</h5>
-                            <p class="card-text">{{ peinture.description | u.truncate(200, '...', false) }}</p>
-                            <p class="card-text"><small class="text-muted"> Ajoutée le {{ peinture.createdAt | date('d/m/Y')  }}</small></p>
-                        </div>
+                        <div class="col-md-6 align-self-center ml-5">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ peinture.nom }}</h5>
+                                <p class="card-text">{{ peinture.description | u.truncate(200, '...', false) }}</p>
+                                <p class="card-text"><small class="text-muted"> Ajoutée le {{ peinture.createdAt | date('d/m/Y')  }}</small></p>
+                            </div>
                         </div>
                     </div>
                 </div>

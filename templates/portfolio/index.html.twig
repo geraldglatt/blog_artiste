@@ -11,21 +11,16 @@
                 </div>
             </div>
             <hr>
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-5 col-lg-5 text-center">
-                    <h2 class="display-2 fw-bold text-dark">Peintures</h2>
-                </div>
-            </div>
         </div>
     </section>
     <section class="py-5 py-md-5 mt-n5 mt-md-5">
         <div class="container">
             <div class="row" id-"portfolio" data-isotope='{"layoutMode": "firRows"}'>
                 {% for categorie in categories %}
-                    {% set peinture = categorie.peintures|last %}
+                    {# {% set sculpture = categorie.sculptures|last %} #}
                     <div class="col-12 col-md-4 ux">
                         <a  class="card lift lift-lg shadow-light-lg mb-5" href="{{ path('app_portfolio_category', {'slug': categorie.slug}) }}">
-                        <img class="card-img-top justify-content-center" src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="{{ categorie.nom }}">
+                        {# <img class="card-img-top justify-content-center" src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="{{ categorie.nom }}"> #}
                         <div class="card-body">
                             <div class="shape shape-bottom-100 shape-fluid-x svg-shim text-dark">
                         </div>
@@ -39,33 +34,4 @@
         </div>
     </section>
     <hr>
-    <section class="pt-5 pt-md-5 pb-5 pb-md-5 bg-grey-900">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-5 col-lg-5 text-center">
-                    <h2 class="display-2 fw-bold text-dark">Sculptures</h2>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="py-5 py-md-5 mt-n5 mt-md-5">
-        <div class="container">
-            <div class="row" id-"portfolio" data-isotope='{"layoutMode": "firRows"}'>
-                {% for categorie in categories %}
-                    {% set sculpture = categorie.sculptures|last %}
-                    <div class="col-12 col-md-4 ux">
-                        <a  class="card lift lift-lg shadow-light-lg mb-5" href="{{ path('app_portfolio_category', {'slug': categorie.slug}) }}">
-                        <img class="card-img-top" src="{{ vich_uploader_asset(sculpture, 'imageFile') }}" alt="{{ categorie.nom }}">
-                        <div class="card-body">
-                            <div class="shape shape-bottom-100 shape-fluid-x svg-shim text-dark">
-                        </div>
-                            <h4 class="mb-1">{{ categorie.nom }}</h4>
-                            <small>{{ categorie.description }}</small>
-                        </div>
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
 {% endblock %}

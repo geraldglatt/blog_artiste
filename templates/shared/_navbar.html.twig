@@ -36,12 +36,12 @@
                        Porfolio 
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarAccount">
-                        {% for c in categoryRepository.findAll() %}
-                            <li class="dropdown-item dropend">
-                                <a href="{{ path('app_portfolio_category', {'slug': c.slug}) }}">{{ c.nom }}</a>
-                            </li>
-                        {% endfor %}
-                        
+                        <li>Catégorie:</li>
+                            {% for c in categoryRepository.findAll() %}
+                                <li class="dropdown-item dropend">
+                                    <a href="{{ path('app_portfolio_category', {'slug': c.slug}) }}">{{ c.nom }}</a>
+                                </li>
+                            {% endfor %}   
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

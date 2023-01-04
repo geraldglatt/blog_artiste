@@ -3,13 +3,12 @@
 {% block title %}Portfolio de Stéphane Paillot{% endblock %}
 
 {% block body %}
-    {% set peinture = category.peintures | last %}
     <section class="pt-5 pt-md-5 pb-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-5 col-lg-5 text-center">
                     <h1 class="display-2 fw-bold text-dark">
-                        {{ category.nom }}
+                        {{ category.nom }}n
                     </h1>
                     <p class="lead text-white-75 mb-4">
                         {{ category.description }}
@@ -25,7 +24,16 @@
                 {% for peinture in peintures %}
                     <a class="card shadow-light mb-5" href="#!">
                         <div class="card">
-                            <img style="width:500px; heigth: 500px;" class="card-img" src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="{{ peinture.nom}}">
+                            <img style="width:400px; heigth: 400px;" class="card-img" src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="{{ peinture.nom}}">
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="row">
+                {% for sculpture in sculptures %}
+                    <a class="card shadow-light mb-5" href="#!">
+                        <div class="card">
+                            <img style="width:400px; heigth: 400px;" class="card-img" src="{{ vich_uploader_asset(sculpture, 'imageFile') }}" alt="{{ sculpture.nom}}">
                         </div>
                     </a>
                 {% endfor %}
