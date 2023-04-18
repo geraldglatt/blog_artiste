@@ -16,7 +16,8 @@
         <div class="row">
         {% for sculpture in sculptures %}
             <div class="col-12">
-                <div class="card card-row shadow-light-lg mb-4 lift lift-lg" data-aos="flip-up" data-aos-duration="1100" data-aos-easing="linear">
+                <div class="card card-row shadow-light-lg mb-4 lift lift-lg"
+                data-aos="flip-up" data-aos-duration="1100" data-aos-easing="linear">
                     <div class="row no-gutters">
                         <div class="col-md-4">
                             <a href="{{ path('app_sculpture_realisation', {'slug': sculpture.slug}) }}">

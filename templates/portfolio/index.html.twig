@@ -13,25 +13,28 @@
             <hr>
         </div>
     </section>
-    <section class="py-5 py-md-5 mt-n5 mt-md-5">
+    <section class="py-5 py-md-3 mt-n5 mt-md-3">
         <div class="container">
-            <div class="row" id-"portfolio" data-isotope='{"layoutMode": "firRows"}'>
+            <div class="row" id-"portfolio">
+                  
                 {% for categorie in categories %}
-                    {# {% set sculpture = categorie.sculptures|last %} #}
-                    <div class="col-12 col-md-4 ux">
-                        <a  class="card lift lift-lg shadow-light-lg mb-5" href="{{ path('app_portfolio_category', {'slug': categorie.slug}) }}">
-                        {# <img class="card-img-top justify-content-center" src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="{{ categorie.nom }}"> #}
-                        <div class="card-body">
-                            <div class="shape shape-bottom-100 shape-fluid-x svg-shim text-dark">
+                    <div class="col-12 col-md-4 mb-3">
+                    {% set sculpture = categorie.sculptures|last %}
+                        <div class="card text-center">
+                            {# <img class="card-img-top justify-content-center" src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="{{ categorie.nom }}"> #}
+                            <div class="card-body">
+                                <h4 class="card-title">{{ categorie.nom }}</h4>
+                                <small class="card-text">{{ categorie.description }}</small>
+                            </div>
+                            <a  class="btn btn-primary" 
+                            href="{{ path('app_portfolio_category', 
+                            {'slug': categorie.slug}) }}">
+                            Clicker pour découvrir
+                            </a>
                         </div>
-                            <h4 class="mb-1">{{ categorie.nom }}</h4>
-                            <small>{{ categorie.description }}</small>
-                        </div>
-                        </a>
                     </div>
                 {% endfor %}
             </div>
         </div>
     </section>
-    <hr>
 {% endblock %}

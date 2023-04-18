@@ -1,4 +1,4 @@
-{% form_theme formview 'bootstrap_5_layout.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
 
 <section class="pt-5 pt-md-5">
     <div class="container">
@@ -31,23 +31,23 @@
     </div>
 </section>
 <!-- Modal -->
-<div
-class="modal fade"
-id="commentaire"
-tabindex="-1"
-aria-labelledby="Commentaire"
-aria-hidden="true"
-data-modal-form-target="modal"
->    
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Laisser un commentaire</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                {{ form(formview) }}
+    <div
+    class="modal fade"
+    id="commentaire"
+    tabindex="-1"
+    aria-labelledby="Commentaire"
+    aria-hidden="true"
+    data-modal-form-target="modal"
+    >    
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Laisser un commentaire</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{ form(form) }}
+                </div>
             </div>
         </div>
     </div>
-</div>
