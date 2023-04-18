@@ -53,8 +53,8 @@ class PeintureController extends AbstractController
             $commentaire = $form->getData();
             $commentaireService->persistCommentaire($commentaire, null, $peinture,null);
 
-            $this->addFlash('success', 'Votre commentaire a bien été envoyé,nous vous en remercions !. 
-            Il sera publié après vérification par l\'artiste  ');
+            $this->addFlash('success', 'Votre commentaire a bien été envoyé,nous vous en remercions. 
+            Il sera publié après vérification par l\'artiste.  ');
 
             return $this->redirectToRoute('app_peintures_realisations', ['slug' => $peinture->getSlug()]);
         }

@@ -20,20 +20,26 @@
     <hr>
     <section class="py-8 py-md-11 mt-nd10 mt-md-n14">
         <div class="container">
-            <div class="row">
+            <div class="row ml-5">
                 {% for peinture in peintures %}
                     <a class="card shadow-light mb-5" href="#!">
-                        <div class="card">
-                            <img style="width:400px; heigth: 400px;" class="card-img" src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="{{ peinture.nom}}">
+                        <div class="card-img">
+                            <img style="width:400px; heigth: 400px;" 
+                            class="card-img" 
+                            src="{{ vich_uploader_asset(peinture, 'imageFile') }}" 
+                            alt="{{ peinture.nom}}">
                         </div>
                     </a>
                 {% endfor %}
             </div>
             <div class="row">
                 {% for sculpture in sculptures %}
-                    <a class="card shadow-light mb-5" href="#!">
-                        <div class="card">
-                            <img style="width:400px; heigth: 400px;" class="card-img" src="{{ vich_uploader_asset(sculpture, 'imageFile') }}" alt="{{ sculpture.nom}}">
+                    <a class="card mb-5" href="#!">
+                        <div class="bg-image hover-zoom">
+                            <img style="width:350px; heigth: 400px;" 
+                            class="" 
+                            src="{{ vich_uploader_asset(sculpture, 'imageFile') }}" 
+                            alt="{{ sculpture.nom}}">
                         </div>
                     </a>
                 {% endfor %}
